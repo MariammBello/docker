@@ -1,46 +1,40 @@
-# Learning
-This is a documentation area for things I learn
+# Docker
+## Building a Docker Image and creating a docker file for the steps.
 
-Docker Images 
-Building and Running a Python Flask App in a Docker Container
-In this project, I worked on deploying a simple Python Flask application inside a Docker container, starting from the Ubuntu OS. Here's how I proceeded:
+Sample: Building and Running a Python Flask App in a Docker Container
+In this project, I worked on deploying a simple Python Flask application inside a Docker container, starting from the Ubuntu OS. 
+Here's how I proceeded:
+Steps 1-4 are the steps done manually, 5 up will address how to build a docker file to do the same tasks so that they can be reusable in any environment without the manual work or issues with unified deployments. 
 
-1. Pulling and Running Ubuntu OS Inside a Docker Container
+## 1. Pulling and Running Ubuntu OS Inside a Docker Container
 To begin, I pulled the ubuntu image and started an interactive terminal session within the container. This allowed me to work in a fresh Ubuntu environment.
-
-´´´docker run -p 8080:8080 -it ubuntu bash```
-
+```
+docker run -p 8080:8080 -it ubuntu bash
+```
 ### Explanation:
--p 8080:8080: This maps the container's port 8080 to my local machine's port 8080, enabling access to the Flask app from the host browser.
--it: Interactive mode with a terminal session.
-ubuntu: The base image for Ubuntu OS.
-bash: Opens a Bash terminal inside the Ubuntu container.
+```-p 8080:8080``` This maps the container's port 8080 to my local machine's port 8080, enabling access to the Flask app from the host browser.
+```-it``` Interactive mode with a terminal session.
+```ubuntu```: The base image for Ubuntu OS.
+```bash```: Opens a Bash terminal inside the Ubuntu container.
 Once inside the container, the prompt changed to:
+```root@d80e61c125e1:#```
 
-graphql
-Copy code
-root@d80e61c125e1:#
-2. Setting Up the Flask Environment
+## 2. Setting Up the Flask Environment
 The next step was to install Python3 and Flask inside the container:
-
-bash
-Copy code
+```
 apt-get update                   # Update package information
-apt-get install -y python3        # Install Python 3
-apt-get install python3-pip       # Install pip (Python's package manager)
-apt install python3-flask         # Install Flask via the package manager
+apt-get install -y python3       # Install Python 3
+apt-get install python3-pip      # Install pip (Python's package manager)
+apt install python3-flask        # Install Flask via the package manager
+``` 
 Explanation:
 The commands ensure that Python, pip, and Flask are installed in the container. Flask is a lightweight Python web framework ideal for developing web applications.
-3. Creating the Flask App
+## 3. Creating the Flask App
 Once the environment was set up, I created a simple Flask application by writing the app.py file. Using the cat command, I redirected the source code into /opt/app.py.
 
-bash
-Copy code
-cat > /opt/app.py
-I then pasted the following Python code:
-
-python
-Copy code
+```cat > /opt/app.py```
+This opens an editor so you can paste your source code, I pasted following Python code:
+```
 import os
 from flask import Flask
 
@@ -56,19 +50,19 @@ def hello():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
-Explanation:
+```
+### Explanation:
 This Python script creates a Flask web app with two routes:
 Route 1: The root path /, which returns a "Welcome!" message.
 Route 2: A path /how are you which responds with "I am good, how about you?".
-The app.run(host='0.0.0.0') ensures the app runs on all available IP addresses, allowing access from outside the container.
-4. Running the Flask App
-To run the Flask app, I used the following command:
+The ``` app.run(host='0.0.0.0')``` ensures the app runs on all available IP addresses, allowing access from outside the container.
 
-bash
-Copy code
-cd /opt
+## 4. Running the Flask App
+To run the Flask app, i changed the directory to where i had my app ```cd /opt```I then used the following command:
+```
 FLASK_APP=app.py flask run --host=0.0.0.0
-Explanation:
+```
+###Explanation:
 cd /opt: Changes the directory to where app.py is located.
 FLASK_APP=app.py: Sets the app.py as the Flask app to run.
 flask run --host=0.0.0.0: Runs the Flask server, making it accessible via the mapped ports.
