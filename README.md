@@ -1,10 +1,10 @@
 # Docker
-## Working with Docker Images, Containers and Dockerfiles
+## Mastering Docker Workflows: Building and Running a Flask Application in Containers
 Sample: Building and Running a Python Flask App in a Docker Container. 
 In this project, I worked on deploying a simple Python Flask application inside a Docker container, starting from the Ubuntu OS. This is in two parts, which involves performing the docker steps manually, and then writing a dockerfile to do the same for reproducible runs.
 The goal of the Docker file is to do the same tasks so that they can be reusable in any environment without the manual work or issues with unified deployments. 
 
-Here's how I proceeded:
+Here's how I proceeded: Within my Bash Terminal
 
 ## 1. Pulling and running an Ubuntu OS Image inside a Docker Container
 To begin, I pulled the ubuntu image and started an interactive terminal session within the container. This allowed me to work in a fresh Ubuntu environment.
@@ -111,6 +111,13 @@ Path Handling in Windows: When using Git Bash or CMD on Windows, the way paths a
 Use of sh Instead of bash: Some containers may not have bash installed, especially lightweight containers. sh is a basic shell that is included by default in most Unix-like systems, making it more reliable in such cases.
 
 ### Now I can rerun my flask app like I did before in step 4. 
+Now that the steps are understood manually, its a great idea to write this in a Docker file so you can execute this faster everytime required.
 
+## 7 Conclusion: Dockerfile for Reproducibility
+The transition from manually setting up the environment to using a Dockerfile for automated builds has made the deployment process far more efficient. This approach ensures that the application can be deployed in any environment with minimal setup, reinforcing Docker’s core benefits of portability and consistency.
+
+
+## Potential Expansion: Automated Deployment
+In the future, this setup could be further automated using GitHub Actions or other CI/CD tools to trigger builds and deployments automatically when changes are pushed to the repository. 
 
 
