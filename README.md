@@ -1,7 +1,7 @@
 # Docker
 ## Mastering Docker Workflows: Building and Running a Flask Application in Containers
 Sample: Building and Running a Python Flask App in a Docker Container. 
-In this project, I worked on deploying a simple Python Flask application inside a Docker container, starting from the Ubuntu OS. This is in two parts, which involves performing the docker steps manually, and then writing a dockerfile to do the same for reproducible runs.
+In this project, I worked on deploying a simple Python Flask application inside a Docker container, starting from the Ubuntu OS. This is in two parts, which involves performing the Docker steps manually, and then writing a Dockerfile to do the same for reproducible runs.
 The goal of the Docker file is to do the same tasks so that they can be reusable in any environment without the manual work or issues with unified deployments. 
 
 Here's how I proceeded: Within my Bash Terminal
